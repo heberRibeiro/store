@@ -15,7 +15,7 @@ import br.unit.pe.store.repositories.CategoriaRepository;
 import br.unit.pe.store.services.exceptions.ObjectNotFoundException;
 
 @Service
-public class CategoriaServices {
+public class CategoriaService {
 	
 	@Autowired
 	private CategoriaRepository repository;
