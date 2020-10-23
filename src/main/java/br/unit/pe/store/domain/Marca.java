@@ -1,9 +1,12 @@
 package br.unit.pe.store.domain;
 
+import java.io.Serializable;
+
 /**
  * The Class Marca.
  */
-public class Marca {
+public class Marca implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
 	private String nome;
@@ -49,5 +52,10 @@ public class Marca {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public Marca(Integer id) {
+		super();
+		this.id = id;
 	}
 }
