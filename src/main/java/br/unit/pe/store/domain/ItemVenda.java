@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * The Class ItemVenda.
@@ -17,10 +19,13 @@ public class ItemVenda implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Integer produtoId;
 	private Integer vendaId;
 	private Integer quantidade;
 	private Double valorUnitario;
+	
+	@ManyToOne
+	@JoinColumn(name = "produtoId")
+	private Produto produto;
 	
 	/**
 	 * Instantiates a new item venda.
@@ -37,9 +42,8 @@ public class ItemVenda implements Serializable {
 	 * @param quantidade quantidade
 	 * @param valorUnitario valor unitario
 	 */
-	public ItemVenda(Integer id, Integer produtoId, Integer vendaId, Integer quantidade, Double valorUnitario) {
+	public ItemVenda(Integer id, Integer vendaId, Integer quantidade, Double valorUnitario) {
 		this.id = id;
-		this.produtoId = produtoId;
 		this.vendaId = vendaId;
 		this.quantidade = quantidade;
 		this.valorUnitario = valorUnitario;
@@ -51,14 +55,6 @@ public class ItemVenda implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getProdutoId() {
-		return produtoId;
-	}
-
-	public void setProdutoId(Integer produtoId) {
-		this.produtoId = produtoId;
 	}
 
 	public Integer getVendaId() {
@@ -83,6 +79,14 @@ public class ItemVenda implements Serializable {
 
 	public void setValorUnitario(Double valorUnitario) {
 		this.valorUnitario = valorUnitario;
+	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 
 	@Override

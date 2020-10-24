@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * The Class Faq.
@@ -20,7 +22,10 @@ public class Faq implements Serializable {
 	private Integer id;
 	private String texto;
 	private Date dataHora;
-	private Integer produtoId;
+	
+	@ManyToOne
+	@JoinColumn(name = "produtoId")
+	private Produto produto;
 	
 	/**
 	 * Instantiates a new faq.
@@ -40,7 +45,6 @@ public class Faq implements Serializable {
 		this.id = id;
 		this.texto = texto;
 		this.dataHora = dataHora;
-		this.produtoId = produtoId;
 	}
 
 	public Integer getId() {
@@ -65,14 +69,6 @@ public class Faq implements Serializable {
 
 	public void setDataHora(Date dataHora) {
 		this.dataHora = dataHora;
-	}
-
-	public Integer getProdutoId() {
-		return produtoId;
-	}
-
-	public void setProdutoId(Integer produtoId) {
-		this.produtoId = produtoId;
 	}
 
 	@Override

@@ -46,7 +46,6 @@ public class FaqService {
 			obj.setId(faq.getId());
 			obj.setTexto(faq.getTexto());
 			obj.setDataHora(faq.getDataHora());
-			obj.setProdutoId(faq.getProdutoId());
 			
 			return repository.save(obj);
 

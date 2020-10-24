@@ -48,9 +48,6 @@ public class ProdutoService {
 			obj.setDescricao(produto.getDescricao());
 			obj.setPrecoUnitario(produto.getPrecoUnitario());
 			obj.setUnidade(produto.getUnidade());
-			obj.setCategoriaId(produto.getCategoriaId());
-			obj.setFornecedorId(produto.getFornecedorId());
-			obj.setMarcaId(produto.getMarcaId());
 			
 			return repository.save(obj);
 

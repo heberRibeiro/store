@@ -22,6 +22,9 @@ public class Categoria implements Serializable {
 	private Integer id;
 	private String nome;
 	private Integer status;
+	
+	@OneToMany(mappedBy = "categoria")
+	private List<Produto> produtos = new ArrayList<>();
 		
 	/**
 	 * Instantiates a new categoria.
@@ -64,6 +67,10 @@ public class Categoria implements Serializable {
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	public List<Produto> getProdutos() {
+		return produtos;
 	}
 
 	@Override

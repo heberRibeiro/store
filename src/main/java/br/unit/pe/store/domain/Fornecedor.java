@@ -1,11 +1,14 @@
 package br.unit.pe.store.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Fornecedor implements Serializable {
@@ -19,6 +22,9 @@ public class Fornecedor implements Serializable {
 	private String telefone;
 	private String cnpj;
 	private String email;
+	
+	@OneToMany(mappedBy = "fornecedor")
+	private List<Produto> produtos = new ArrayList<>();
 	
 	public Fornecedor() {
 		

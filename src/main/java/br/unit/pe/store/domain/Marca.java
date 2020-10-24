@@ -1,11 +1,14 @@
 package br.unit.pe.store.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * The Class Marca.
@@ -19,6 +22,9 @@ public class Marca implements Serializable {
 	private Integer id;
 	private String nome;
 	private String descricao;
+	
+	@OneToMany(mappedBy = "marca")
+	private List<Produto> produtos = new ArrayList<>();
 	
 	/**
 	 * Instantiates a new marca.
