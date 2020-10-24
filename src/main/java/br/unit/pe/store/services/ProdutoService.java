@@ -1,7 +1,7 @@
 package br.unit.pe.store.services;
 
 import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -15,23 +15,17 @@ import br.unit.pe.store.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ProdutoService {
-	
+
 	@Autowired
 	private ProdutoRepository repository;
-	
+
 	public List<Produto> findAll() {
 		return repository.findAll();
 	}
-	
+
 	public Produto findById(Integer id) {
-
-		try {
-			Produto produto = repository.findById(id).get();
-			return produto;
-
-		} catch (NoSuchElementException e) {
-			throw new ObjectNotFoundException("Produto não encotrado na base de dados.");
-		}
+		Optional<Produto> produto = repository.findById(id);
+		return produto.orElseThrow(() -> new ObjectNotFoundException("Produto não encotrado na base de dados."));
 	}
 
 	public Produto insert(Produto produto) {
@@ -46,7 +40,7 @@ public class ProdutoService {
 			obj.setDescricao(produto.getDescricao());
 			obj.setPrecoUnitario(produto.getPrecoUnitario());
 			obj.setUnidade(produto.getUnidade());
-			
+
 			return repository.save(obj);
 
 		} catch (EntityNotFoundException e) {
