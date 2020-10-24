@@ -19,13 +19,16 @@ public class ItemVenda implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Integer vendaId;
 	private Integer quantidade;
 	private Double valorUnitario;
 	
 	@ManyToOne
 	@JoinColumn(name = "produtoId")
 	private Produto produto;
+	
+	@ManyToOne
+	@JoinColumn(name = "vendaId")
+	private Venda venda;
 	
 	/**
 	 * Instantiates a new item venda.
@@ -42,9 +45,8 @@ public class ItemVenda implements Serializable {
 	 * @param quantidade quantidade
 	 * @param valorUnitario valor unitario
 	 */
-	public ItemVenda(Integer id, Integer vendaId, Integer quantidade, Double valorUnitario) {
+	public ItemVenda(Integer id, Integer quantidade, Double valorUnitario) {
 		this.id = id;
-		this.vendaId = vendaId;
 		this.quantidade = quantidade;
 		this.valorUnitario = valorUnitario;
 	}
@@ -55,14 +57,6 @@ public class ItemVenda implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getVendaId() {
-		return vendaId;
-	}
-
-	public void setVendaId(Integer vendaId) {
-		this.vendaId = vendaId;
 	}
 
 	public Integer getQuantidade() {

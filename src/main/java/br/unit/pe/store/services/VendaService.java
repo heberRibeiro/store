@@ -45,8 +45,6 @@ public class VendaService {
 			Venda obj = repository.getOne(id); // return a reference to the entity
 			obj.setId(venda.getId());
 			obj.setData(venda.getData());
-			obj.setClientId(venda.getClientId());
-			obj.setFormaPagamentoId(venda.getFormaPagamentoId());
 			obj.setTotal(venda.getTotal());
 			
 			return repository.save(obj);

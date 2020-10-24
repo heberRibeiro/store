@@ -1,11 +1,14 @@
 package br.unit.pe.store.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * The Class FormaPagamento.
@@ -20,6 +23,9 @@ public class FormaPagamento implements Serializable {
 	private String forma;
 	private String descricao;
 	private Integer status;
+	
+	@OneToMany(mappedBy = "formaPagamento")
+	private List<Venda> vendas = new ArrayList<>();
 	
 	/**
 	 * Instantiates a new forma pagamento.

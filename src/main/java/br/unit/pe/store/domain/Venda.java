@@ -1,12 +1,17 @@
 package br.unit.pe.store.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * The Class Venda.
@@ -19,9 +24,18 @@ public class Venda implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Date data;
-	private Integer clientId;
-	private Integer formaPagamentoId;
 	private Double total;
+	
+	@ManyToOne
+	@JoinColumn(name = "clienteId")
+	private Cliente cliente;
+	
+	@ManyToOne
+	@JoinColumn(name = "formaPagamentoId")
+	private FormaPagamento formaPagamento;
+	
+	@OneToMany(mappedBy = "venda")
+	private List<ItemVenda> itensVenda = new ArrayList<>();
 	
 	/**
 	 * Instantiates a new venda.
@@ -38,11 +52,9 @@ public class Venda implements Serializable{
 	 * @param formaPagamentoId id forma pagamento da venda
 	 * @param total total da venda
 	 */
-	public Venda(Integer id, Date data, Integer clientId, Integer formaPagamentoId, Double total) {
+	public Venda(Integer id, Date data, Double total) {
 		this.id = id;
 		this.data = data;
-		this.clientId = clientId;
-		this.formaPagamentoId = formaPagamentoId;
 		this.total = total;
 	}
 
@@ -60,22 +72,6 @@ public class Venda implements Serializable{
 
 	public void setData(Date data) {
 		this.data = data;
-	}
-
-	public Integer getClientId() {
-		return clientId;
-	}
-
-	public void setClientId(Integer clientId) {
-		this.clientId = clientId;
-	}
-
-	public Integer getFormaPagamentoId() {
-		return formaPagamentoId;
-	}
-
-	public void setFormaPagamentoId(Integer formaPagamentoId) {
-		this.formaPagamentoId = formaPagamentoId;
 	}
 
 	public Double getTotal() {

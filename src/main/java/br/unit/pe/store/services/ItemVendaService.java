@@ -44,7 +44,6 @@ public class ItemVendaService {
 		try {
 			ItemVenda obj = repository.getOne(id); // return a reference to the entity
 			obj.setId(itemVenda.getId());
-			obj.setVendaId(itemVenda.getVendaId());
 			obj.setQuantidade(itemVenda.getQuantidade());
 			obj.setValorUnitario(itemVenda.getValorUnitario());
 			
