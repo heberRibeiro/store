@@ -33,7 +33,8 @@ public class Marca implements Serializable {
 	 * @param nome nome da marca
 	 * @param descricao descricao da marca
 	 */
-	public Marca(String nome, String descricao) {
+	public Marca(Integer id, String nome, String descricao) {
+		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 	}
