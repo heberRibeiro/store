@@ -9,9 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import io.swagger.annotations.ApiModel;
+
 /**
  * The Class ItemVenda.
  */
+@ApiModel(value = "Item de Venda", description = "A entidade Item de Venda corresponde a associação entre a entidade Venda e Produto")
 @Entity
 public class ItemVenda implements Serializable {
 	private static final long serialVersionUID = 1L;

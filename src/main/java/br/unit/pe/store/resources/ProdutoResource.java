@@ -17,7 +17,12 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.unit.pe.store.domain.Produto;
 import br.unit.pe.store.services.ProdutoService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
+@Api(value = "Produto Endpoint", description = "Acesso aos endpoint da entidade Produto", tags =  {"Produto Endpoint"})
 @RestController
 @RequestMapping(value = "/produto")
 public class ProdutoResource {
@@ -25,18 +30,21 @@ public class ProdutoResource {
 	@Autowired
 	private ProdutoService service;
 
+	@ApiOperation(value = "Busca todos os Produtos")
 	@GetMapping
 	public ResponseEntity<List<Produto>> findAll() {
 		List<Produto> produtos = service.findAll();
 		return ResponseEntity.ok().body(produtos);
 	}
 
+	@ApiOperation(value = "Busca um Produto pelo ID", notes = "Este endpoint faz a busca de um Produto passando o Id como parâmetro da requisição.")
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Produto> findById(@PathVariable Integer id) {
 		Produto obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 
+	@ApiOperation(value = "Insere um Produto enviando um json no corpo da requisição")
 	@PostMapping
 	public ResponseEntity<Produto> insert(@RequestBody Produto produto) {
 		Produto obj = service.insert(produto);
@@ -44,12 +52,14 @@ public class ProdutoResource {
 		return ResponseEntity.created(uri).body(obj);
 	}
 
+	@ApiOperation(value = "Deleta um Produto passando o ID como parâmetro da requisição")
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 
+	@ApiOperation(value = "Atualiza um Produto")
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Produto> update(@PathVariable Integer id, @RequestBody Produto produto) {
 		produto = service.update(id, produto);
