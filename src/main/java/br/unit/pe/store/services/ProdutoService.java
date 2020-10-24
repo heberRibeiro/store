@@ -6,11 +6,13 @@ import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import br.unit.pe.store.domain.Produto;
 import br.unit.pe.store.repositories.ProdutoRepository;
+import br.unit.pe.store.services.exceptions.DatabaseException;
 import br.unit.pe.store.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -55,6 +57,8 @@ public class ProdutoService {
 
 		} catch (EmptyResultDataAccessException e) {
 			throw new ObjectNotFoundException("Produto não encontrado na base de dados para deleção.");
+		} catch (DataIntegrityViolationException e) {
+			throw new DatabaseException("Erro no banco de dados. Confira se o Produto possui relação com outras entidades.");
 		}
 	}
 }
