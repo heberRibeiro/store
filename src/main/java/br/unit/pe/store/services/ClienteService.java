@@ -63,7 +63,4 @@ public class ClienteService {
 			throw new ObjectNotFoundException("Cliente não encontrada na base de dados para deleção.");
 		}
 	}
-	
-	
-
 }
