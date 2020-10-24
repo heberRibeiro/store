@@ -44,8 +44,9 @@ public class Cliente implements Serializable {
 	 * @param nomeSocial nome social do Cliente
 	 * @param telefone telefone do Cliente
 	 */
-	public Cliente(String nome, String cpf, String email, Date dataNascimento, String sexo, String nomeSocial,
+	public Cliente(Integer id, String nome, String cpf, String email, Date dataNascimento, String sexo, String nomeSocial,
 			String telefone) {
+		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;

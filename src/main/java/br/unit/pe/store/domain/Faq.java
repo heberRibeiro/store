@@ -36,7 +36,8 @@ public class Faq implements Serializable {
 	 * @param dataHora data hora do faq
 	 * @param produtoId id do Produto
 	 */
-	public Faq(String texto, Date dataHora, Integer produtoId) {
+	public Faq(Integer id, String texto, Date dataHora, Integer produtoId) {
+		this.id = id;
 		this.texto = texto;
 		this.dataHora = dataHora;
 		this.produtoId = produtoId;

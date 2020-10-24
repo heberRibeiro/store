@@ -38,7 +38,8 @@ public class Venda implements Serializable{
 	 * @param formaPagamentoId id forma pagamento da venda
 	 * @param total total da venda
 	 */
-	public Venda(Date data, Integer clientId, Integer formaPagamentoId, Double total) {
+	public Venda(Integer id, Date data, Integer clientId, Integer formaPagamentoId, Double total) {
+		this.id = id;
 		this.data = data;
 		this.clientId = clientId;
 		this.formaPagamentoId = formaPagamentoId;

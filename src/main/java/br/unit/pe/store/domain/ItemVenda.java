@@ -37,7 +37,8 @@ public class ItemVenda implements Serializable {
 	 * @param quantidade quantidade
 	 * @param valorUnitario valor unitario
 	 */
-	public ItemVenda(Integer produtoId, Integer vendaId, Integer quantidade, Double valorUnitario) {
+	public ItemVenda(Integer id, Integer produtoId, Integer vendaId, Integer quantidade, Double valorUnitario) {
+		this.id = id;
 		this.produtoId = produtoId;
 		this.vendaId = vendaId;
 		this.quantidade = quantidade;

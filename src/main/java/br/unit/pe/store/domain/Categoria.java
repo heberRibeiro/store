@@ -1,11 +1,14 @@
 package br.unit.pe.store.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * The Class Categoria.
@@ -19,7 +22,7 @@ public class Categoria implements Serializable {
 	private Integer id;
 	private String nome;
 	private Integer status;
-	
+		
 	/**
 	 * Instantiates a new categoria.
 	 */

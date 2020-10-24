@@ -35,7 +35,8 @@ public class FormaPagamento implements Serializable {
 	 * @param descricao descricao da forma de pagamento
 	 * @param status status da forma de pagamento. 1 - ativo, 0 - inativo
 	 */
-	public FormaPagamento(String forma, String descricao, Integer status) {
+	public FormaPagamento(Integer id, String forma, String descricao, Integer status) {
+		this.id = id;
 		this.forma = forma;
 		this.descricao = descricao;
 		this.status = status;

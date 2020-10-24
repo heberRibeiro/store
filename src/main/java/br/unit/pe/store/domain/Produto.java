@@ -46,6 +46,7 @@ public class Produto implements Serializable {
 	 */
 	public Produto(Integer id, String nome, String descricao, Double precoUnitario, String unidade, Integer categoriaId,
 			Integer fornecedorId, Integer marcaId) {
+		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.precoUnitario = precoUnitario;
