@@ -7,7 +7,6 @@ import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.unit.pe.store.domain.Produto;
@@ -20,8 +19,8 @@ public class ProdutoService {
 	@Autowired
 	private ProdutoRepository repository;
 	
-	public List<Produto> findAll(Pageable pageable) {
-		return repository.findAll(pageable).getContent();
+	public List<Produto> findAll() {
+		return repository.findAll();
 	}
 	
 	public Produto findById(Integer id) {
@@ -39,11 +38,10 @@ public class ProdutoService {
 		return repository.save(produto);
 	}
 
-	public Produto update(Produto produto, Integer id) {
+	public Produto update(Integer id, Produto produto) {
 
 		try {
 			Produto obj = repository.getOne(id); // return a reference to the entity
-			obj.setId(produto.getId());
 			obj.setNome(produto.getNome());
 			obj.setDescricao(produto.getDescricao());
 			obj.setPrecoUnitario(produto.getPrecoUnitario());
