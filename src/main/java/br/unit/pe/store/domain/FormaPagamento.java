@@ -10,36 +10,39 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * The Class FormaPagamento.
  */
 @Entity
 public class FormaPagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String forma;
 	private String descricao;
 	private Integer status;
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "formaPagamento")
 	private List<Venda> vendas = new ArrayList<>();
-	
+
 	/**
 	 * Instantiates a new forma pagamento.
 	 */
 	public FormaPagamento() {
-		
+
 	}
 
 	/**
 	 * Instantiates a new forma pagamento.
 	 *
-	 * @param forma forma de pagamento
+	 * @param forma     forma de pagamento
 	 * @param descricao descricao da forma de pagamento
-	 * @param status status da forma de pagamento. 1 - ativo, 0 - inativo
+	 * @param status    status da forma de pagamento. 1 - ativo, 0 - inativo
 	 */
 	public FormaPagamento(Integer id, String forma, String descricao, Integer status) {
 		this.id = id;
@@ -47,7 +50,6 @@ public class FormaPagamento implements Serializable {
 		this.descricao = descricao;
 		this.status = status;
 	}
-
 
 	public Integer getId() {
 		return id;

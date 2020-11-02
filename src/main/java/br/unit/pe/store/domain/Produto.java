@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * The Class Produto.
  */
@@ -34,14 +36,16 @@ public class Produto implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "fornecedorId")
 	private Fornecedor fornecedor;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "marcaId")
 	private Marca marca;
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "produto")
 	private List<Faq> faqs = new ArrayList<>();
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "produto")
 	private List<ItemVenda> itensVenda = new ArrayList<>();
 
@@ -118,7 +122,7 @@ public class Produto implements Serializable {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
+
 	public Fornecedor getFornecedor() {
 		return fornecedor;
 	}

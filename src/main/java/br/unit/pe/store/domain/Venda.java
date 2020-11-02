@@ -13,44 +13,47 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * The Class Venda.
  */
 @Entity
-public class Venda implements Serializable{
+public class Venda implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Date data;
 	private Double total;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "clienteId")
 	private Cliente cliente;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "formaPagamentoId")
 	private FormaPagamento formaPagamento;
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "venda")
 	private List<ItemVenda> itensVenda = new ArrayList<>();
-	
+
 	/**
 	 * Instantiates a new venda.
 	 */
 	public Venda() {
-		
+
 	}
 
 	/**
 	 * Instantiates a new venda.
 	 *
-	 * @param data data e hora em que ocorreu a venda
-	 * @param clientId id do cliente ao qual a venda está associada
+	 * @param data             data e hora em que ocorreu a venda
+	 * @param clientId         id do cliente ao qual a venda está associada
 	 * @param formaPagamentoId id forma pagamento da venda
-	 * @param total total da venda
+	 * @param total            total da venda
 	 */
 	public Venda(Integer id, Date data, Double total) {
 		this.id = id;

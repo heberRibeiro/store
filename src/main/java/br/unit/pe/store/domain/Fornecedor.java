@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Fornecedor implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -22,12 +24,13 @@ public class Fornecedor implements Serializable {
 	private String telefone;
 	private String cnpj;
 	private String email;
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "fornecedor")
 	private List<Produto> produtos = new ArrayList<>();
-	
+
 	public Fornecedor() {
-		
+
 	}
 
 	public Fornecedor(Integer id, String nome, String endereco, String telefone, String cnpj, String email) {

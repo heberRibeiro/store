@@ -11,13 +11,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * The Class Cliente.
  */
 @Entity
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -28,30 +30,31 @@ public class Cliente implements Serializable {
 	private String sexo;
 	private String nomeSocial;
 	private String telefone;
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
 	private List<Venda> vendas = new ArrayList<>();
-	
+
 	/**
 	 * Instantiates a new cliente.
 	 */
 	public Cliente() {
-		
+
 	}
 
 	/**
 	 * Instantiates a new cliente.
 	 *
-	 * @param nome nome do Cliente
-	 * @param cpf cpf do Cliente
-	 * @param email email do Cliente
+	 * @param nome           nome do Cliente
+	 * @param cpf            cpf do Cliente
+	 * @param email          email do Cliente
 	 * @param dataNascimento data nascimento do Cliente
-	 * @param sexo sexo do Cliente
-	 * @param nomeSocial nome social do Cliente
-	 * @param telefone telefone do Cliente
+	 * @param sexo           sexo do Cliente
+	 * @param nomeSocial     nome social do Cliente
+	 * @param telefone       telefone do Cliente
 	 */
-	public Cliente(Integer id, String nome, String cpf, String email, Date dataNascimento, String sexo, String nomeSocial,
-			String telefone) {
+	public Cliente(Integer id, String nome, String cpf, String email, Date dataNascimento, String sexo,
+			String nomeSocial, String telefone) {
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;

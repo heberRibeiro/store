@@ -10,34 +10,37 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * The Class Categoria.
  */
 @Entity
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private Integer status;
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "categoria")
 	private List<Produto> produtos = new ArrayList<>();
-		
+
 	/**
 	 * Instantiates a new categoria.
 	 */
 	public Categoria() {
-		
+
 	}
 
 	/**
 	 * Instantiates a new categoria.
 	 *
-	 * @param id id da Categoria
-	 * @param nome nome da Categoria
+	 * @param id     id da Categoria
+	 * @param nome   nome da Categoria
 	 * @param status status da Categoria
 	 */
 	public Categoria(Integer id, String nome, Integer status) {

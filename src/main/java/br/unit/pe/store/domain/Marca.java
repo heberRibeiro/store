@@ -10,33 +10,36 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * The Class Marca.
  */
 @Entity
 public class Marca implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private String descricao;
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "marca")
 	private List<Produto> produtos = new ArrayList<>();
-	
+
 	/**
 	 * Instantiates a new marca.
 	 */
 	public Marca() {
-		
+
 	}
 
 	/**
 	 * Instantiates a new marca.
 	 *
-	 * @param nome nome da marca
+	 * @param nome      nome da marca
 	 * @param descricao descricao da marca
 	 */
 	public Marca(Integer id, String nome, String descricao) {
