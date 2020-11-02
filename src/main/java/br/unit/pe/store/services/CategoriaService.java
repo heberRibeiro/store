@@ -7,7 +7,6 @@ import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.unit.pe.store.domain.Categoria;
@@ -20,8 +19,8 @@ public class CategoriaService {
 	@Autowired
 	private CategoriaRepository repository;
 	
-	public List<Categoria> findAll(Pageable pageable) {
-		return repository.findAll(pageable).getContent();
+	public List<Categoria> findAll() {
+		return repository.findAll();
 	}
 	
 	public Categoria findById(Integer id) {
