@@ -18,9 +18,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.unit.pe.store.domain.Produto;
 import br.unit.pe.store.services.ProdutoService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 
 @Api(value = "Produto Endpoint", description = "Acesso aos endpoint da entidade Produto", tags =  {"Produto Endpoint"})
 @RestController
