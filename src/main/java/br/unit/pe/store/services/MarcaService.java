@@ -7,7 +7,6 @@ import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.unit.pe.store.domain.Marca;
@@ -16,14 +15,14 @@ import br.unit.pe.store.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class MarcaService {
-	
+
 	@Autowired
 	private MarcaRepository repository;
-	
-	public List<Marca> findAll(Pageable pageable) {
-		return repository.findAll(pageable).getContent();
+
+	public List<Marca> findAll() {
+		return repository.findAll();
 	}
-	
+
 	public Marca findById(Integer id) {
 
 		try {
@@ -46,7 +45,7 @@ public class MarcaService {
 			obj.setId(marca.getId());
 			obj.setNome(marca.getNome());
 			obj.setDescricao(marca.getDescricao());
-			
+
 			return repository.save(obj);
 
 		} catch (EntityNotFoundException e) {
