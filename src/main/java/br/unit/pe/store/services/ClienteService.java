@@ -7,7 +7,6 @@ import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.unit.pe.store.domain.Cliente;
@@ -20,8 +19,8 @@ public class ClienteService {
 	@Autowired
 	private ClienteRepository repository;
 	
-	public List<Cliente> findAll(Pageable pageable) {
-		return repository.findAll(pageable).getContent();
+	public List<Cliente> findAll() {
+		return repository.findAll();
 	}
 	
 	public Cliente findById(Integer id) {
