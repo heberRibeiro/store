@@ -64,5 +64,4 @@ public class FaqResource {
 		return ResponseEntity.ok().body(Faq);
 	}
 
-
 }
