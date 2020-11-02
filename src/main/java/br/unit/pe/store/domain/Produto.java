@@ -135,6 +135,22 @@ public class Produto implements Serializable {
 		return itensVenda;
 	}
 
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
+	}
+
+	public void setMarca(Marca marca) {
+		this.marca = marca;
+	}
+
+	public void setFaqs(List<Faq> faqs) {
+		this.faqs = faqs;
+	}
+
+	public void setItensVenda(List<ItemVenda> itensVenda) {
+		this.itensVenda = itensVenda;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
