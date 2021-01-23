@@ -86,6 +86,14 @@ public class ItemVenda implements Serializable {
 		this.produto = produto;
 	}
 
+	public Venda getVenda() {
+		return venda;
+	}
+
+	public void setVenda(Venda venda) {
+		this.venda = venda;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
