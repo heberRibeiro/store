@@ -26,10 +26,10 @@ public class Venda implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Date data;
-	private Double total;
+	private Double total;	
 
 	@ManyToOne
-	@JoinColumn(name = "clienteId")
+	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 
 	@ManyToOne
@@ -39,6 +39,7 @@ public class Venda implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "venda")
 	private List<ItemVenda> itensVenda = new ArrayList<>();
+	
 
 	/**
 	 * Instantiates a new venda.
@@ -84,6 +85,14 @@ public class Venda implements Serializable {
 	public void setTotal(Double total) {
 		this.total = total;
 	}
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
 	@Override
 	public int hashCode() {
@@ -109,4 +118,6 @@ public class Venda implements Serializable {
 			return false;
 		return true;
 	}
+	
 }
+
