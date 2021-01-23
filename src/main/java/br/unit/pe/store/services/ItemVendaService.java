@@ -7,7 +7,6 @@ import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.unit.pe.store.domain.ItemVenda;
@@ -20,8 +19,8 @@ public class ItemVendaService {
 	@Autowired
 	private ItemVendaRepository repository;
 	
-	public List<ItemVenda> findAll(Pageable pageable) {
-		return repository.findAll(pageable).getContent();
+	public List<ItemVenda> findAll() {
+		return repository.findAll();
 	}
 	
 	public ItemVenda findById(Integer id) {
